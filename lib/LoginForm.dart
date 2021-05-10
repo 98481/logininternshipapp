@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:internshipapp/Authentication/authentication.dart';
 import 'package:internshipapp/RegisterForm.dart';
 import 'package:internshipapp/main.dart';
@@ -153,6 +154,17 @@ class _LoginPageState extends State<LoginPage> {
                                       Navigator.pushReplacement(context,
                                         MaterialPageRoute(builder: (context) =>
                                             MyHomePage(),),);
+                                    }
+                                    else if(!user.emailVerified){
+                                    Fluttertoast.showToast(
+                                    msg: "Please Verify Email Then Login",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 2,
+                                    backgroundColor: Colors.black54,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                    );
                                     }
                                   }
                                 }
